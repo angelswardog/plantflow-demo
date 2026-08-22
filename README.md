@@ -1,6 +1,6 @@
-# PlantFlow Production Manager — V9 Demo
+# PlantFlow Production Manager — V9.1 Full Master Test
 
-Interactive manufacturing workflow test build for PlantFlow.
+Interactive browser prototype for the PlantFlow manufacturing operations and workforce-management system.
 
 ## Demo Accounts
 
@@ -11,16 +11,31 @@ Interactive manufacturing workflow test build for PlantFlow.
 - Office — `OFF5001 / 5555`
 - Administrator — `ADM6001 / 6666`
 
-## Test Flow
+## V9.1 Test Areas
 
-1. Sign in as Production Employee.
-2. Clock into shift.
-3. Start an assigned job.
-4. Enter Good Pieces and Scrap.
-5. Complete Production.
-6. Confirm PlantFlow automatically enters `INDIRECT — REASON REQUIRED`.
-7. Sign in as Shipping Employee and move Production Complete work through Shipping Prep to Shipment Ready.
-8. Sign in as Office and perform Verify & Final Close.
-9. Test Supervisor/Manager/Admin views for Live Floor, Dispatch, People, and Audit.
+- Production shift, direct/indirect timing and automatic indirect after Production Complete
+- Assigned Work and Dispatch
+- Shipping Prep, discrepancies and Shipment Ready
+- Office Final Close
+- Live Floor
+- Production Record Control, holds and corrections
+- Management Action Center
+- People management: add, edit, deactivate/reactivate and employee history
+- Organization hierarchy
+- Reviews, raise recommendations and approval routing
+- Job Master and standard revisions
+- Shift Handoff
+- Time Administration with scoped supervisor/manager/admin corrections, mandatory reason and audit trail
+- Built-in QA screen and Audit Log
 
-This repository is the browser-test prototype. The production build will use persistent backend storage, server-side authorization, secure authentication, concurrency controls, immutable audit records, and the complete PlantFlow product specification.
+## Time Administration Scope
+
+- Supervisor: own direct-report employees
+- Manager: employees in the manager's department
+- Administrator: active Production and Shipping employees across the organization
+
+Production corrections enforce `Shift Hours = Direct Hours + Indirect Hours`. Shipping corrections enforce `Work Hours <= Shift Hours`. Every time correction records the old values, new values, actor and reason in Audit and employee history.
+
+## Important
+
+This is a browser-test prototype, not a production deployment. A production implementation still requires persistent backend storage, server-side authorization, secure authentication, transactional workflows, immutable audit storage, concurrency controls and production infrastructure.
