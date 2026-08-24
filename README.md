@@ -1,17 +1,24 @@
-# PlantFlow Production Manager — V9.5 Analytics & Team Performance
+# PlantFlow Production Manager — V9.5.1 Integrity Patch
 
-Interactive browser prototype for PlantFlow manufacturing operations and workforce management.
+Interactive browser prototype for PlantFlow manufacturing operations, workforce workflows, employee performance and Operations Analytics.
 
-## V9.5 additions
-- Employee **My Performance** dashboard with production, quality, Direct/Indirect time, adjusted utilization, trends, job history, and “Where Did My Shift Go?” breakdown.
-- Employee **Team Production Board** visible to employees with normalized friendly competition, quality-weighted scoring, privacy protections, range filters, team targets and achievements. Productivity above 100% provides no extra leaderboard score.
-- Supervisor **Team Performance** and Manager/Admin **Operations Analytics** dashboards.
-- KPI monitoring for Output, Downtime, Schedule Attainment, On-Time Delivery, Quality and Operational Loss with drilldowns.
-- Dispatch now records Planned Quantity and Due Date so schedule/delivery KPIs are based on actual workflow data.
-- Operational delay categories distinguish machine/material/quality losses from employee-controlled performance.
+## V9.5.1 Integrity repairs
+- Dated Production and Shipping time sessions; Today no longer carries prior-day counters.
+- Time Admin is date-specific and Production Direct corrections reconcile to a job allocation.
+- People mutations revalidate department/reporting scope inside the mutation handler.
+- Shipping Employee actions enforce active prep ownership.
+- On-Time Delivery includes all due work in the denominator and compares normalized timestamps.
+- Stale tabs block mutations before in-memory/UI state changes.
+- Scheduled pay-effective audit events are attributed to SYSTEM.
+- Planned Quantity and Job Standard reject zero/invalid values explicitly.
+- Team standings require a minimum production sample; Quality King requires meaningful volume.
+- Required Indirect reason selector has an accessible name.
+- Browser state is tamper-evident for authorization, credential state and compensation integrity; persisted credentials use proof values rather than plaintext PINs.
 
 ## Verification
-V9.5 passed a fresh 396-check browser QA/regression sweep before deployment, covering all 11 demo accounts, role/tab/mobile navigation, new analytics and privacy behavior, Production → Shipping → Office, Time Admin, People, Dispatch, Reviews, Job Master, visible-control wiring, and live dashboard refresh.
+- 360/360 fresh functional, hostile-state, regression and stress assertions passed before deployment.
+- 1,451 visible enabled button appearances traversed across all 11 seeded roles/accounts with no unwired action.
+- Exact release SHA-256: `8ea9e505eafa7fa0e4fd58637ef886b6d5d4733638e01aa6a7da9565e9369c64`
 
 ## Prototype boundary
-This GitHub Pages build still uses same-browser/device state. A production deployment requires a shared database, server-side authentication/RBAC, immutable server audit storage, backups, observability and real multi-user concurrency.
+This remains a GitHub Pages browser prototype. True shared state, confidential credential/compensation storage, authoritative server-side authentication/RBAC and immutable audit require the production backend. Client tamper-evidence is defense-in-depth, not a substitute for server security.
