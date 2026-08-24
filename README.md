@@ -1,29 +1,17 @@
-# PlantFlow Production Manager — V9.4 Integrity / Hardening Build
+# PlantFlow Production Manager — V9.5 Analytics & Team Performance
 
-Interactive browser prototype for PlantFlow.
+Interactive browser prototype for PlantFlow manufacturing operations and workforce management.
 
-## V9.4 hardening
+## V9.5 additions
+- Employee **My Performance** dashboard with production, quality, Direct/Indirect time, adjusted utilization, trends, job history, and “Where Did My Shift Go?” breakdown.
+- Employee **Team Production Board** visible to employees with normalized friendly competition, quality-weighted scoring, privacy protections, range filters, team targets and achievements. Productivity above 100% provides no extra leaderboard score.
+- Supervisor **Team Performance** and Manager/Admin **Operations Analytics** dashboards.
+- KPI monitoring for Output, Downtime, Schedule Attainment, On-Time Delivery, Quality and Operational Loss with drilldowns.
+- Dispatch now records Planned Quantity and Due Date so schedule/delivery KPIs are based on actual workflow data.
+- Operational delay categories distinguish machine/material/quality losses from employee-controlled performance.
 
-- Timestamp-derived Production and Shipping time recovery
-- Active-work guards for role/department changes and deactivation
-- Mutation-level Dispatch scope/job validation
-- Dispatch reprioritize, hold/release and cancel controls
-- Shipment Ready invalidation after Production quantity/scrap edits
-- Atomic Shipping-state cleanup when records return to Production
-- Shipping handoff/release workflow
-- Time Admin indirect-block reconciliation
-- Review performance/reliability persistence and returned-review resubmission
-- Supervisor team scorecard review snapshot
-- Office personnel review support for Administrator
-- Compensation redaction in Supervisor History/Audit
-- Cross-department Audit scoping
-- Reactivation clears prior lockout state
-- Same-browser multi-tab stale-state warning/protection
+## Verification
+V9.5 passed a fresh 396-check browser QA/regression sweep before deployment, covering all 11 demo accounts, role/tab/mobile navigation, new analytics and privacy behavior, Production → Shipping → Office, Time Admin, People, Dispatch, Reviews, Job Master, visible-control wiring, and live dashboard refresh.
 
-## Test evidence
-
-The exact release candidate passed 98/98 full regression checks, 44/44 edge/button/mobile checks, 63/63 adversarial authorization/state checks, and 26/26 V9.4 hardening checks. JavaScript syntax, unique DOM IDs and invalid nested controls were also verified.
-
-## Important architecture boundary
-
-This remains a static browser prototype. Shared multi-device state, server authentication/RBAC, immutable audit storage, database transactions/concurrency, backups and production observability require the backend/database implementation.
+## Prototype boundary
+This GitHub Pages build still uses same-browser/device state. A production deployment requires a shared database, server-side authentication/RBAC, immutable server audit storage, backups, observability and real multi-user concurrency.
